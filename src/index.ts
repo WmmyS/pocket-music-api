@@ -1,12 +1,16 @@
-import express from "express";
+import express from 'express';
 
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-    res.send("The sedulous hyena ate the antelope!");
+app.get('/', (req, res) => {
+  res.send('The sedulous hyena ate the antelope!');
+});
+
+app.get('/wesley', (req, res) => {
+  res.send('test');
 });
 
 app.listen(port, () => {
-    console.log(`server is listening on ${port}`);
+  console.log(`server is listening on ${port}`);
 });
