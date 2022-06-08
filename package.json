@@ -28,6 +28,7 @@
     "express": "^4.18.1",
     "loader": "^2.1.1",
     "nodemon": "^2.0.16",
+    "swagger-express-ts": "^1.1.0",
     "ts-loader": "^9.3.0"
   }
 }
