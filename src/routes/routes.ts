@@ -16,7 +16,7 @@ const indexController = new IndexController();
  * /music:
  *   get:
  *     summary: Return Musics
- *     description: Returns musics
+ *     description: Retorna músicas
  *     id: musictest
  *     tags:
  *      - Music
@@ -46,6 +46,30 @@ const indexController = new IndexController();
  *     responses:
  *       200:
  *         description: OK
+ */
+
+/**
+ * @swagger
+ * /music:
+ *   delete:
+ *     summary: Delete Musics
+ *     description: Delete musics
+ *     id: musictest
+ *     tags:
+ *      - Music
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Ok
+ *       400:
+ *         description: Bad Request
+ *       401:
+ *         description: Unautorized
+ *       404:
+ *         description: Not found
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
