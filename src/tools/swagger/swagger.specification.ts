@@ -13,7 +13,7 @@ export class SwaggerSpecification {
       },
       servers: [
         {
-          url: 'http://localhost:3000/index',
+          url: 'http://localhost:3000/api',
         },
       ],
     },
