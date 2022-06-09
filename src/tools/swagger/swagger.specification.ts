@@ -17,7 +17,7 @@ export class SwaggerSpecification {
         },
       ],
     },
-    apis: ['./src/routes/*.ts'],
+    apis: ['./src/*.ts'],
     controllers: ['./src/controllers/*.ts'],
   };
 }
