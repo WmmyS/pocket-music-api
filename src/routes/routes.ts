@@ -6,37 +6,77 @@ const indexController = new IndexController();
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     Book:
- *       type: object
- *       required:
- *         - title
- *         - author
- *         - finished
- *       properties:
- *         id:
- *           type: integer
- *           description: The auto-generated id of the book.
- *         title:
- *           type: string
- *           description: The title of your book.
- *         author:
- *           type: string
- *           description: Who wrote the book?
- *         finished:
- *           type: boolean
- *           description: Have you finished reading it?
- *         createdAt:
- *           type: string
- *           format: date
- *           description: The date of the record creation.
- *       example:
- *          title: The Pragmatic Programmer
- *          author: Andy Hunt / Dave Thomas
- *          finished: true
+ * tags:
+ *   - name: Music
+ *     description: Music
  */
 
+/**
+ * @swagger
+ * /music:
+ *   get:
+ *     summary: Return Musics
+ *     description: Returns musics
+ *     id: musictest
+ *     tags:
+ *      - Music
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Ok
+ */
+
+/**
+ * @swagger
+ * /music:
+ *   post:
+ *     summary: Persist Musics
+ *     description: Persist musics.
+ *     security: []
+ *     tags:
+ *      - Music
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#components/schemas/Music"
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: OK
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Music:
+ *       type: object
+ *       required:
+ *         - id
+ *         - title
+ *         - author
+ *         - time
+ *       properties:
+ *         id:
+ *           type: number
+ *           description: The auto-generated id of the music.
+ *         title:
+ *           type: string
+ *           description: The title of music.
+ *         author:
+ *           type: string
+ *           description: Author name.
+ *         time:
+ *           type: string
+ *           description: Time of music.
+ *       example:
+ *          title: Livin' On A Prayer
+ *          author: Bon Jovi
+ *          time: 4:08
+ */
 router.get('/index', indexController.getIndex);
 
 export default router;
