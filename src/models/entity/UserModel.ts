@@ -1,5 +1,7 @@
-export class UserModel {
-  private id?: number;
+import { ModelBaseInterface } from './interfaces/model.base.interface';
+
+export class UserModel implements ModelBaseInterface {
+  public id?: string;
   private username?: string;
   private firstname?: string;
   private lastname?: string;

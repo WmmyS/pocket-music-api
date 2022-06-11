@@ -1,6 +1,7 @@
+import { ModelBaseInterface } from './interfaces/model.base.interface';
 import { MusicModel as Music } from './MusicModel';
 
-export class Playlist {
+export class Playlist implements ModelBaseInterface {
   public id?: string;
   public name?: string;
   public gender?: string;
@@ -33,10 +34,10 @@ export class Playlist {
  *           description: list of musics.
  *       example:
  *          name: Rock List
- *          gender: Rock 80"
+ *          gender: Rock 80
  *          musics: [
  *            {
- *              title: Livin' On A Prayer,
+ *              title: Livin On A Prayer,
  *              author: Bon Jovi,
  *              time: 4:08
  *            }

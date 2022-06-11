@@ -1,13 +1,13 @@
-import { RecordNotFoundException } from '../../utils/exceptions/record.not.found.exception';
-
 export interface ServiceBaseInterface<T> {
+  getEntities(): T[];
+
   findAll(): Promise<T[]>;
 
-  findById(id: string): T | RecordNotFoundException;
+  findById(id: string): T | any;
 
   insert(entity: T): T;
 
-  update(id: string, entity: T): T | RecordNotFoundException;
+  update(id: string, entity: T): T | any;
 
-  delete(id: string): void | RecordNotFoundException;
+  delete(id: string): boolean;
 }

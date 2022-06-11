@@ -24,6 +24,7 @@ export class Application {
     // this.app.use(bodyParser);
     // this.app.use('/static', express.static(join(__dirname, 'public')));
     // this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(json));
+    this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true, limit: '350mb' }));
     this.app.use(router);
     this.app.use(

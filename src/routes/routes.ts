@@ -1,108 +1,12 @@
 import { Router } from 'express';
+import { MusicController } from '../controllers/music.controller';
 import { PlaylistController } from '../controllers/playlist.controller';
+import { AuthenticationJWT } from '../middlewares/authentication-jwt';
 
 const router = Router();
 const playlistController = new PlaylistController();
-
-/**
- * @swagger
- * tags:
- *   - name: Music
- *     description: Operações da música
- */
-
-/**
- * @swagger
- * /music:
- *   get:
- *     summary: Retorna as músicas
- *     tags:
- *      - Music
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- */
-
-/**
- * @swagger
- * /music/{id}:
- *   get:
- *     summary: Retorna a música que corresponde ao ID informado
- *     tags:
- *      - Music
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Sucesso
- *       400:
- *         description: ID inválido
- *       404:
- *         description: Música não encontrada
- */
-
-/**
- * @swagger
- * /music:
- *   post:
- *     summary: Adicionando uma música
- *     tags:
- *      - Music
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             $ref: "#components/schemas/Music"
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: OK
- *       405:
- *         description: Entrada inválida
- */
-
-/**
- * @swagger
- * /music:
- *   put:
- *     summary: Atualiza ID da música
- *     tags:
- *      - Music
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Sucesso
- *       400:
- *         description: ID inválido
- *       404:
- *         description: Música não encontrada
- */
-
-/**
- * @swagger
- * /music/{id}:
- *   delete:
- *     summary: Deleta música
- *     tags:
- *      - Music
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- *       400:
- *         description: Bad Request
- *       401:
- *         description: Unautorized
- *       404:
- *         description: Not found
- *       500:
- *         description: Internal Server Error
- */
+const musicController = new MusicController();
+const authentication = new AuthenticationJWT().authethentication;
 
 /**
  * @swagger
@@ -133,6 +37,8 @@ const playlistController = new PlaylistController();
  *         description: OK
  *       405:
  *         description: Entrada inválida
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
@@ -147,6 +53,8 @@ const playlistController = new PlaylistController();
  *     responses:
  *       200:
  *         description: Ok
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
@@ -161,6 +69,8 @@ const playlistController = new PlaylistController();
  *     responses:
  *       200:
  *         description: Ok
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
@@ -175,6 +85,8 @@ const playlistController = new PlaylistController();
  *     responses:
  *       200:
  *         description: Ok
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
@@ -193,7 +105,9 @@ const playlistController = new PlaylistController();
  *       400:
  *         description: ID inválido
  *       404:
- *         description: Usuário não encontrada
+ *         description: Usuário não encontrado
+ *       500:
+ *         description: Internal Server Error
  */
 
 /**
@@ -221,10 +135,39 @@ const playlistController = new PlaylistController();
 /**
  * Playlist Routes
  */
-router.get(`/api/${playlistController.url}`, playlistController.findAll);
-router.get(`/api/${playlistController.url}:id`, playlistController.findById);
-router.post(`/api/${playlistController.url}`, playlistController.insert);
-router.put(`/api/${playlistController.url}:id`, playlistController.update);
-router.delete(`/api/${playlistController.url}:id`, playlistController.delete);
+router.get(
+  `/api/${playlistController.url}`,
+  authentication,
+  playlistController.findAll,
+);
+router.get(
+  `/api/${playlistController.url}/:id`,
+  authentication,
+  playlistController.findById,
+);
+router.post(
+  `/api/${playlistController.url}`,
+  authentication,
+  playlistController.insert,
+);
+router.put(
+  `/api/${playlistController.url}/:id`,
+  authentication,
+  playlistController.update,
+);
+router.delete(
+  `/api/${playlistController.url}/:id`,
+  authentication,
+  playlistController.delete,
+);
+
+/**
+ * Music Routes
+ */
+router.get(`/api/${musicController.url}`, musicController.findAll);
+router.get(`/api/${musicController.url}/:id`, musicController.findById);
+router.post(`/api/${musicController.url}`, musicController.insert);
+router.put(`/api/${musicController.url}/:id`, musicController.update);
+router.delete(`/api/${musicController.url}/:id`, musicController.delete);
 
 export default router;

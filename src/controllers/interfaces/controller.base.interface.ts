@@ -1,13 +1,17 @@
 import { Request, Response } from 'express';
 
-export interface ControllerBaseInterface<T> {
+export interface ControllerBaseInterface {
   findAll(req: Request, res: Response): Promise<Response<JSON>>;
 
-  findById(): T;
+  findById(
+    req: Request,
+    res: Response,
+    id: string,
+  ): Promise<Response<JSON>> | Promise<any>;
 
-  update(): T;
+  update(req: Request, res: Response): Promise<any>;
 
-  insert(): T;
+  insert(req: Request, res: Response): Promise<any>;
 
-  delete(id: string): void;
+  delete(req: Request, res: Response): Promise<any>;
 }
