@@ -2,10 +2,13 @@ import { Router } from 'express';
 import { MusicController } from '../controllers/music.controller';
 import { PlaylistController } from '../controllers/playlist.controller';
 import { AuthenticationJWT } from '../middlewares/authentication-jwt';
+import { AuthenticationController } from '../tools/authentication/controller/authetication.controller';
 
 const router = Router();
 const playlistController = new PlaylistController();
 const musicController = new MusicController();
+const authenticationContoller = new AuthenticationController();
+
 const authentication = new AuthenticationJWT().authethentication;
 
 /**
@@ -133,6 +136,18 @@ const authentication = new AuthenticationJWT().authethentication;
  */
 
 /**
+ * Authentication
+ */
+router.post(
+  `/api/${authenticationContoller.url}/register`,
+  authenticationContoller.registerLogin,
+);
+router.post(
+  `/api/${authenticationContoller.url}`,
+  authenticationContoller.authentication,
+);
+
+/**
  * Playlist Routes
  */
 router.get(
@@ -164,10 +179,30 @@ router.delete(
 /**
  * Music Routes
  */
-router.get(`/api/${musicController.url}`, musicController.findAll);
-router.get(`/api/${musicController.url}/:id`, musicController.findById);
-router.post(`/api/${musicController.url}`, musicController.insert);
-router.put(`/api/${musicController.url}/:id`, musicController.update);
-router.delete(`/api/${musicController.url}/:id`, musicController.delete);
+router.get(
+  `/api/${musicController.url}`,
+  authentication,
+  musicController.findAll,
+);
+router.get(
+  `/api/${musicController.url}/:id`,
+  authentication,
+  musicController.findById,
+);
+router.post(
+  `/api/${musicController.url}`,
+  authentication,
+  musicController.insert,
+);
+router.put(
+  `/api/${musicController.url}/:id`,
+  authentication,
+  musicController.update,
+);
+router.delete(
+  `/api/${musicController.url}/:id`,
+  authentication,
+  musicController.delete,
+);
 
 export default router;

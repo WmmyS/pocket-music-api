@@ -101,7 +101,6 @@ export class PlaylistController implements ControllerBaseInterface {
    * /playlist:
    *   post:
    *     summary: Criando o usuário
-   *     security: []
    *     tags:
    *      - Playlist
    *     requestBody:

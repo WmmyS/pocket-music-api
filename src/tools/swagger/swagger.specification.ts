@@ -11,6 +11,22 @@ export class SwaggerSpecification {
           url: 'https://choosealicense.com/licenses/mit/',
         },
       },
+      components: {
+        schemas: {},
+        securitySchemes: {
+          Bearer: {
+            type: 'http',
+            description: 'Enter JWT Bearer token **_only_**',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
+          },
+        },
+      },
+      security: [
+        {
+          Bearer: [],
+        },
+      ],
       servers: [
         {
           url: 'http://localhost:3000/api',

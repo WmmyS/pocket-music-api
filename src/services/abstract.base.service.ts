@@ -1,5 +1,6 @@
 import { ServiceBaseInterface } from './interfaces/service.base.interface';
 import { ModelBaseInterface } from '../models/entity/interfaces/model.base.interface';
+import { v4 } from 'uuid';
 
 export abstract class AbstractBaseService<T extends ModelBaseInterface>
   implements ServiceBaseInterface<T>
@@ -23,7 +24,7 @@ export abstract class AbstractBaseService<T extends ModelBaseInterface>
   }
 
   insert(entry: T): T {
-    entry.id = (this.getEntities().length + 1).toString();
+    entry.id = v4();
     this.getEntities().push(entry);
     return entry;
   }

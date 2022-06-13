@@ -1,19 +1,17 @@
 import jwt from 'jsonwebtoken';
-import { Login } from '../models/entity/LoginModel';
 import { Request, Response } from 'express';
+import { LoginAuthentication } from '../tools/authentication/model/login.authentication';
+
+const keySecret = 'teste';
 
 export class AuthenticationJWT {
-  keyScret = 'senhaAleatoria';
-
-  generateToken(login: Login) {
+  generateToken(login: LoginAuthentication) {
     let token = '';
     try {
-      token = jwt.sign(
-        { admin_id: login.id, login: login.login },
-        this.keyScret,
-        { expiresIn: '720h' },
-      );
-      console.log('Token generated for ' + login.login);
+      token = jwt.sign({ id: login.id, email: login.email }, keySecret, {
+        expiresIn: '720h',
+      });
+      console.log('Token generated for ' + login.email);
     } catch (error: any) {
       console.log(error.name + ' - ' + error.message);
     }
@@ -33,7 +31,7 @@ export class AuthenticationJWT {
         const bearer: string[] = header.split(' ');
         const token: string = bearer[1];
 
-        jwt.verify(token, this.keyScret, (error: any, data: any) => {
+        jwt.verify(token, keySecret, (error: any) => {
           if (error) {
             return res.status(403).json({ message: 'Invalid token' });
           }
@@ -41,7 +39,7 @@ export class AuthenticationJWT {
 
         return next();
       } else {
-        return res.status(401).json({ message: 'No token passed' });
+        return res.status(401).json({ message: 'Token not found' });
       }
     } catch (error: any) {
       return res
