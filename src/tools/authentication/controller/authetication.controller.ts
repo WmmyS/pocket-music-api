@@ -41,7 +41,7 @@ export class AuthenticationController {
 
     console.log(`email: ${email}, password: ${password}`);
     try {
-      const loginInserted = await authenticationService.insert({
+      const loginInserted = await authenticationService.save({
         email: email,
         password: password,
       });

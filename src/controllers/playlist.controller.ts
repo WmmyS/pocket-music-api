@@ -125,7 +125,7 @@ export class PlaylistController implements ControllerBaseInterface {
    */
   async insert(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
-    const response = await playlistService.insert(body);
+    const response = await playlistService.save(body);
     return res.status(200).json(response);
   }
 

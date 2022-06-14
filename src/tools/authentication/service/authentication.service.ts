@@ -1,4 +1,4 @@
-import { AbstractBaseService } from '../../../services/abstract.base.service';
+import { AbstractBaseService } from '../../../common/abstract.services/abstract.base.service';
 import { LoginAuthentication as Login } from '../model/login.authentication';
 
 export class AthenticationService extends AbstractBaseService<Login> {

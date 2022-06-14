@@ -1,5 +1,5 @@
 import { ServiceBaseInterface } from './interfaces/service.base.interface';
-import { ModelBaseInterface } from '../models/entity/interfaces/model.base.interface';
+import { ModelBaseInterface } from '../../models/entity/interfaces/model.base.interface';
 import { v4 } from 'uuid';
 
 export abstract class AbstractBaseService<T extends ModelBaseInterface> implements ServiceBaseInterface<T> {
@@ -21,9 +21,10 @@ export abstract class AbstractBaseService<T extends ModelBaseInterface> implemen
     return;
   }
 
-  insert(entry: T): T {
+  save(entry: T): T {
     entry.id = v4();
     this.getEntities().push(entry);
+    console.log(`Entry ${entry} has been saved successfuly`);
     return entry;
   }
 

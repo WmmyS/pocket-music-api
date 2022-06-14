@@ -78,7 +78,7 @@ export class MusicController implements ControllerBaseInterface {
    */
   async insert(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
-    const response = await musicService.insert(body);
+    const response = await musicService.save(body);
     return res.status(200).json(response);
   }
   /**

@@ -5,7 +5,7 @@ export interface ServiceBaseInterface<T> {
 
   findById(id: string): T | any;
 
-  insert(entity: T): T;
+  save(entity: T): T;
 
   update(id: string, entity: T): T | any;
 
