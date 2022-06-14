@@ -10,13 +10,13 @@ const musicService = new MusicService();
  *  name: Music
  *  description: API Music
  */
-
 export class MusicController implements ControllerBaseInterface {
   public url = 'music';
   async findAll(req: Request, res: Response): Promise<Response<JSON>> {
     const response = await musicService.findAll();
     return res.status(200).json(response);
   }
+
   /**
    * @swagger
    * /music:
@@ -45,7 +45,6 @@ export class MusicController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-
   async findById(req: Request, res: Response): Promise<Response<JSON>> {
     let { id } = req.params;
     if (typeof id !== 'string') id = '0';
@@ -57,6 +56,7 @@ export class MusicController implements ControllerBaseInterface {
 
     return res.status(200).json(response);
   }
+
   /**
    * @swagger
    * /music/{id}:
@@ -76,8 +76,7 @@ export class MusicController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-
-  async insert(req: Request, res: Response): Promise<any> {
+  async insert(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
     const response = await musicService.insert(body);
     return res.status(200).json(response);
@@ -104,8 +103,7 @@ export class MusicController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-
-  async update(req: Request, res: Response): Promise<any> {
+  async update(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
     const { id } = req.params;
     const response = await musicService.update(id, body);
@@ -114,6 +112,7 @@ export class MusicController implements ControllerBaseInterface {
       return res.status(200).json(response);
     }
   }
+
   /**
    * @swagger
    * /music:
@@ -133,8 +132,7 @@ export class MusicController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-
-  async delete(req: Request, res: Response): Promise<any> {
+  async delete(req: Request, res: Response): Promise<unknown> {
     const { id } = req.params;
     const response = await musicService.delete(id);
     if (response === false) {
@@ -142,6 +140,7 @@ export class MusicController implements ControllerBaseInterface {
       return res.status(200).json({ message: 'Record deleted succesfuly' });
     }
   }
+
   /**
    * @swagger
    * /music/{id}:

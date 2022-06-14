@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { LoginAuthentication } from '../tools/authentication/model/login.authentication';
 
 const keySecret = 'teste';
@@ -19,11 +19,7 @@ export class AuthenticationJWT {
     return token;
   }
 
-  async authethentication(
-    req: Request,
-    res: Response,
-    next: any,
-  ): Promise<any> {
+  async authethentication(req: Request, res: Response, next: NextFunction): Promise<unknown> {
     try {
       const header = req.headers.authorization;
 
@@ -31,7 +27,7 @@ export class AuthenticationJWT {
         const bearer: string[] = header.split(' ');
         const token: string = bearer[1];
 
-        jwt.verify(token, keySecret, (error: any) => {
+        jwt.verify(token, keySecret, (error: unknown) => {
           if (error) {
             return res.status(403).json({ message: 'Invalid token' });
           }
@@ -41,10 +37,8 @@ export class AuthenticationJWT {
       } else {
         return res.status(401).json({ message: 'Token not found' });
       }
-    } catch (error: any) {
-      return res
-        .status(500)
-        .json({ message: 'Internal Server error. Try again' });
+    } catch (error: unknown) {
+      return res.status(500).json({ message: 'Internal Server error. Try again' });
     }
   }
 }

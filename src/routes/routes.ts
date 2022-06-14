@@ -3,6 +3,8 @@ import { MusicController } from '../controllers/music.controller';
 import { PlaylistController } from '../controllers/playlist.controller';
 import { AuthenticationJWT } from '../middlewares/authentication-jwt';
 import { AuthenticationController } from '../tools/authentication/controller/authetication.controller';
+import { emailValidator } from '../middlewares/email.validator';
+import { Request, Response } from 'express';
 
 const router = Router();
 const playlistController = new PlaylistController();
@@ -138,71 +140,32 @@ const authentication = new AuthenticationJWT().authethentication;
 /**
  * Authentication
  */
-router.post(
-  `/api/${authenticationContoller.url}/register`,
-  authenticationContoller.registerLogin,
-);
-router.post(
-  `/api/${authenticationContoller.url}`,
-  authenticationContoller.authentication,
-);
+router.post(`/api/${authenticationContoller.url}/register`, emailValidator, authenticationContoller.registerLogin);
+router.post(`/api/${authenticationContoller.url}`, emailValidator, authenticationContoller.authentication);
 
 /**
  * Playlist Routes
  */
-router.get(
-  `/api/${playlistController.url}`,
-  authentication,
-  playlistController.findAll,
-);
-router.get(
-  `/api/${playlistController.url}/:id`,
-  authentication,
-  playlistController.findById,
-);
-router.post(
-  `/api/${playlistController.url}`,
-  authentication,
-  playlistController.insert,
-);
-router.put(
-  `/api/${playlistController.url}/:id`,
-  authentication,
-  playlistController.update,
-);
-router.delete(
-  `/api/${playlistController.url}/:id`,
-  authentication,
-  playlistController.delete,
-);
+router.get(`/api/${playlistController.url}`, authentication, playlistController.findAll);
+router.get(`/api/${playlistController.url}/:id`, authentication, playlistController.findById);
+router.post(`/api/${playlistController.url}`, authentication, playlistController.insert);
+router.put(`/api/${playlistController.url}/:id`, authentication, playlistController.update);
+router.delete(`/api/${playlistController.url}/:id`, authentication, playlistController.delete);
 
 /**
  * Music Routes
  */
-router.get(
-  `/api/${musicController.url}`,
-  authentication,
-  musicController.findAll,
-);
-router.get(
-  `/api/${musicController.url}/:id`,
-  authentication,
-  musicController.findById,
-);
-router.post(
-  `/api/${musicController.url}`,
-  authentication,
-  musicController.insert,
-);
-router.put(
-  `/api/${musicController.url}/:id`,
-  authentication,
-  musicController.update,
-);
-router.delete(
-  `/api/${musicController.url}/:id`,
-  authentication,
-  musicController.delete,
-);
+router.get(`/api/${musicController.url}`, authentication, musicController.findAll);
+router.get(`/api/${musicController.url}/:id`, authentication, musicController.findById);
+router.post(`/api/${musicController.url}`, authentication, musicController.insert);
+router.put(`/api/${musicController.url}/:id`, authentication, musicController.update);
+router.delete(`/api/${musicController.url}/:id`, authentication, musicController.delete);
+
+/**
+ * Redirect para o swagger
+ */
+router.get(`/`, (req: Request, res: Response) => {
+  res.redirect('/api-docs');
+});
 
 export default router;

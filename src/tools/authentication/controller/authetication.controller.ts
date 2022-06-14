@@ -36,7 +36,7 @@ export class AuthenticationController {
    *       500:
    *         description: Internal Server Error
    */
-  async registerLogin(req: Request, res: Response): Promise<any> {
+  async registerLogin(req: Request, res: Response): Promise<unknown> {
     const { email, password } = req.body;
 
     console.log(`email: ${email}, password: ${password}`);
@@ -46,8 +46,7 @@ export class AuthenticationController {
         password: password,
       });
 
-      if (typeof loginInserted === 'undefined')
-        return res.status(500).json({ message: 'Internal server error' });
+      if (typeof loginInserted === 'undefined') return res.status(500).json({ message: 'Internal server error' });
 
       console.log('salvei');
       const token = autenticationJWT.generateToken(loginInserted);
@@ -89,16 +88,14 @@ export class AuthenticationController {
    *       500:
    *         description: Internal Server Error
    */
-  async authentication(req: Request, res: Response): Promise<any> {
+  async authentication(req: Request, res: Response): Promise<unknown> {
     const { email, password } = req.body;
 
     const login = await authenticationService.getLoginByEmail(email, password);
 
-    if (typeof login === 'undefined')
-      return res.status(401).json({ message: 'Invalid email or password' });
+    if (typeof login === 'undefined') return res.status(401).json({ message: 'Invalid email or password' });
 
     const token = autenticationJWT.generateToken(login);
-    return (res.status(200).json({ token: token }).statusMessage =
-      'Login succesfuly completed');
+    return (res.status(200).json({ token: token }).statusMessage = 'Login succesfuly completed');
   }
 }

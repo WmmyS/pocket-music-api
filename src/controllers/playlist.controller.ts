@@ -42,7 +42,6 @@ export class PlaylistController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-
   async findAll(req: Request, res: Response): Promise<Response<JSON>> {
     const response = await playlistService.findAll();
     return res.status(200).json(response);
@@ -124,7 +123,7 @@ export class PlaylistController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-  async insert(req: Request, res: Response): Promise<any> {
+  async insert(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
     const response = await playlistService.insert(body);
     return res.status(200).json(response);
@@ -163,12 +162,11 @@ export class PlaylistController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-  async update(req: Request, res: Response): Promise<any> {
+  async update(req: Request, res: Response): Promise<unknown> {
     const body = req.body;
     const { id } = req.params;
     const response = await playlistService.update(id, body);
-    if (typeof response === 'undefined')
-      return res.status(404).json({ message: 'Record Not Found' });
+    if (typeof response === 'undefined') return res.status(404).json({ message: 'Record Not Found' });
     return res.status(200).json(response);
   }
 
@@ -200,11 +198,10 @@ export class PlaylistController implements ControllerBaseInterface {
    *       500:
    *         description: Internal Server Error
    */
-  async delete(req: Request, res: Response): Promise<any> {
+  async delete(req: Request, res: Response): Promise<unknown> {
     const { id } = req.params;
     const response = await playlistService.delete(id);
-    if (response === false)
-      return res.status(404).json({ message: 'Record Not Found' });
+    if (response === false) return res.status(404).json({ message: 'Record Not Found' });
     return res.status(200).json({ message: 'Record deleted succesfuly' });
   }
 }
