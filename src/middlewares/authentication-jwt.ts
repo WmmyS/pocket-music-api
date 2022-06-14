@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { LoginAuthentication } from '../tools/authentication/model/login.authentication';
 
 const keySecret = 'teste';

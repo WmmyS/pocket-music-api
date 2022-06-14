@@ -13,7 +13,7 @@ export abstract class AbstractBaseService<T extends ModelBaseInterface> implemen
     return await this.getEntities();
   }
 
-  findById(id: string): T | any {
+  findById(id: string): T | undefined {
     if (this.getEntities().length === 0) return;
     for (const entity of this.getEntities()) {
       if (entity.id === id) return entity;
@@ -27,7 +27,7 @@ export abstract class AbstractBaseService<T extends ModelBaseInterface> implemen
     return entry;
   }
 
-  update(id: string, entry: T): T | any {
+  update(id: string, entry: T): T | undefined {
     if (this.getEntities().length === 0) return;
     for (let i = 0; i < this.getEntities().length; i++) {
       if (this.getEntities()[i].id === id) {
