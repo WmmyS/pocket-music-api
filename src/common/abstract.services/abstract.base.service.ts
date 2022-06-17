@@ -1,17 +1,17 @@
 import { ServiceBaseInterface } from './interfaces/service.base.interface';
-import { ModelBaseInterface } from '../../models/entity/interfaces/model.base.interface';
 import { v4 } from 'uuid';
+import { AbstractBaseEntity } from '../abstract.entities/abstract.base.entity';
 
-export abstract class AbstractBaseService<T extends ModelBaseInterface> implements ServiceBaseInterface<T> {
+export abstract class AbstractBaseService<T extends AbstractBaseEntity> implements ServiceBaseInterface<T> {
   abstract entities: T[];
 
   getEntities(): T[] {
     return this.entities;
   }
 
-  async findAll(): Promise<T[]> {
+  public findAll = async () => {
     return await this.getEntities();
-  }
+  };
 
   findById(id: string): T | undefined {
     if (this.getEntities().length === 0) return;

@@ -1,7 +1,7 @@
-import { ModelBaseInterface } from '../../models/entity/interfaces/model.base.interface';
+import { AbstractBaseEntity } from '../abstract.entities/abstract.base.entity';
 import { AbstractBaseService } from './abstract.base.service';
 
-export default abstract class AbstractBaseServiceTest<S extends AbstractBaseService<T>, T extends ModelBaseInterface> {
+export default abstract class AbstractBaseServiceTest<S extends AbstractBaseService<T>, T extends AbstractBaseEntity> {
   constructor(protected service: new () => S, protected entityClass: new () => T) {}
 
   // System under test

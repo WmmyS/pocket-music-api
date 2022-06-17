@@ -1,6 +1,6 @@
-import { Playlist } from '../models/entity/PlaylistModel';
+import { PlaylistModel } from '../models/entity/playlist.model.entity';
 import { AbstractBaseService } from '../common/abstract.services/abstract.base.service';
 
-export class PlaylistService extends AbstractBaseService<Playlist> {
-  entities: Playlist[] = [];
+export class PlaylistService extends AbstractBaseService<PlaylistModel> {
+  entities: PlaylistModel[] = [];
 }

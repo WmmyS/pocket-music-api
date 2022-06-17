@@ -5,137 +5,21 @@ import { AuthenticationJWT } from '../middlewares/authentication-jwt';
 import { AuthenticationController } from '../tools/authentication/controller/authetication.controller';
 import { emailValidator } from '../middlewares/email.validator';
 import { Request, Response } from 'express';
+import { UserController } from '../controllers/user.controller';
+import { PlaylistService } from '../services/playlist.service';
+import { PlaylistModel } from '../models/entity/playlist.model.entity';
+import { MusicService } from '../services/music.service';
+import { MusicModel } from '../models/entity/music.model.entity';
+import { UserService } from '../services/user.service';
+import { UserModel } from '../models/entity/user.model.entity';
 
 const router = Router();
 const playlistController = new PlaylistController();
 const musicController = new MusicController();
+const userController = new UserController();
 const authenticationContoller = new AuthenticationController();
 
 const authentication = new AuthenticationJWT().authethentication;
-
-/**
- * @swagger
- * tags:
- *   - name: User
- *     description: Operações do usuário
- */
-
-/**
- * @swagger
- * /user:
- *   post:
- *     summary: Criando o usuário
- *     description: Só pode ser feito por um usuário logado no sistema.
- *     tags:
- *      - User
- *     parameters:
- *       - name: username
- *         description: teste.
- *         content:
- *           application/json:
- *             schema:
- *                 $ref: '#/components/schemas/User'
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: OK
- *       405:
- *         description: Entrada inválida
- *       500:
- *         description: Internal Server Error
- */
-
-/**
- * @swagger
- * /user/{username}:
- *   get:
- *     summary: Retorna o usuário pelo username dele
- *     tags:
- *      - User
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- *       500:
- *         description: Internal Server Error
- */
-
-/**
- * @swagger
- * /user/login:
- *   get:
- *     summary: Loga o usuário no sistema
- *     tags:
- *      - User
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- *       500:
- *         description: Internal Server Error
- */
-
-/**
- * @swagger
- * /user/logout:
- *   get:
- *     summary: Desloga o usuário no sistema
- *     tags:
- *      - User
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- *       500:
- *         description: Internal Server Error
- */
-
-/**
- * @swagger
- * /user/{username}:
- *   put:
- *     summary: Atualiza o usuário
- *     description: Só pode ser feito por um usuário que esteja logado.
- *     tags:
- *      - User
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Sucesso
- *       400:
- *         description: ID inválido
- *       404:
- *         description: Usuário não encontrado
- *       500:
- *         description: Internal Server Error
- */
-
-/**
- * @swagger
- * /user/{username}:
- *   delete:
- *     summary: Deleta o usuário
- *     tags:
- *      - User
- *     produces:
- *      - application/json
- *     responses:
- *       200:
- *         description: Ok
- *       400:
- *         description: Bad Request
- *       401:
- *         description: Unautorized
- *       404:
- *         description: Not found
- *       500:
- *         description: Internal Server Error
- */
 
 /**
  * Authentication
@@ -146,20 +30,29 @@ router.post(`/api/${authenticationContoller.url}`, emailValidator, authenticatio
 /**
  * Playlist Routes
  */
-router.get(`/api/${playlistController.url}`, authentication, playlistController.findAll);
-router.get(`/api/${playlistController.url}/:id`, authentication, playlistController.findById);
-router.post(`/api/${playlistController.url}`, authentication, playlistController.insert);
-router.put(`/api/${playlistController.url}/:id`, authentication, playlistController.update);
-router.delete(`/api/${playlistController.url}/:id`, authentication, playlistController.delete);
+router.get(`/api/playlist`, authentication, playlistController.findAll);
+router.get(`/api/playlist/:id`, authentication, playlistController.findById);
+router.post(`/api/playlist`, authentication, playlistController.insert);
+router.put(`/api/playlist/:id`, authentication, playlistController.update);
+router.delete(`/api/playlist/:id`, authentication, playlistController.delete);
 
 /**
  * Music Routes
  */
-router.get(`/api/${musicController.url}`, authentication, musicController.findAll);
-router.get(`/api/${musicController.url}/:id`, authentication, musicController.findById);
-router.post(`/api/${musicController.url}`, authentication, musicController.insert);
-router.put(`/api/${musicController.url}/:id`, authentication, musicController.update);
-router.delete(`/api/${musicController.url}/:id`, authentication, musicController.delete);
+router.get(`/api/music`, authentication, musicController.findAll);
+router.get(`/api/music/:id`, authentication, musicController.findById);
+router.post(`/api/music`, authentication, musicController.insert);
+router.put(`/api/music/:id`, authentication, musicController.update);
+router.delete(`/api/music/:id`, authentication, musicController.delete);
+
+/**
+ * User Routes
+ */
+router.get(`/api/user`, authentication, userController.findAll);
+router.get(`/api/user/:id`, authentication, userController.findById);
+router.post(`/api/user`, authentication, userController.insert);
+router.put(`/api/user/:id`, authentication, userController.update);
+router.delete(`/api/user/:id`, authentication, userController.delete);
 
 /**
  * Redirect para o swagger

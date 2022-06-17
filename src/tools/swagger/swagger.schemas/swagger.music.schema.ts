@@ -1,12 +1,4 @@
-import { ModelBaseInterface } from './interfaces/model.base.interface';
-
-export class MusicModel implements ModelBaseInterface {
-  public id?: string;
-  private title?: string;
-  private author?: string;
-  private time?: string;
-}
-
+export {};
 /**
  * @swagger
  * components:
