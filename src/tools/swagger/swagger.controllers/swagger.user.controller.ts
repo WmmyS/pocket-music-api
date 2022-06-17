@@ -59,7 +59,7 @@ export {};
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/user'
+ *                 $ref: '#/components/schemas/User'
  *       produces:
  *         - application/json
  *       400:
@@ -83,7 +83,7 @@ export {};
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#components/schemas/user"
+ *             $ref: "#components/schemas/User"
  *     produces:
  *      - application/json
  *     responses:
@@ -119,7 +119,7 @@ export {};
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#components/schemas/user"
+ *             $ref: "#components/schemas/User"
  *     produces:
  *      - application/json
  *     responses:
