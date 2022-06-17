@@ -6,12 +6,6 @@ import { AuthenticationController } from '../tools/authentication/controller/aut
 import { emailValidator } from '../middlewares/email.validator';
 import { Request, Response } from 'express';
 import { UserController } from '../controllers/user.controller';
-import { PlaylistService } from '../services/playlist.service';
-import { PlaylistModel } from '../models/entity/playlist.model.entity';
-import { MusicService } from '../services/music.service';
-import { MusicModel } from '../models/entity/music.model.entity';
-import { UserService } from '../services/user.service';
-import { UserModel } from '../models/entity/user.model.entity';
 
 const router = Router();
 const playlistController = new PlaylistController();
