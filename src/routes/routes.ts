@@ -6,12 +6,14 @@ import { AuthenticationController } from '../tools/authentication/controller/aut
 import { emailValidator } from '../middlewares/email.validator';
 import { Request, Response } from 'express';
 import { UserController } from '../controllers/user.controller';
+import { SearcherController } from '../controllers/searcher.controller';
 
 const router = Router();
 const playlistController = new PlaylistController();
 const musicController = new MusicController();
 const userController = new UserController();
 const authenticationContoller = new AuthenticationController();
+const searcherController = new SearcherController();
 
 const authentication = new AuthenticationJWT().authethentication;
 
@@ -20,6 +22,11 @@ const authentication = new AuthenticationJWT().authethentication;
  */
 router.post(`/api/${authenticationContoller.url}/register`, emailValidator, authenticationContoller.registerLogin);
 router.post(`/api/${authenticationContoller.url}`, emailValidator, authenticationContoller.authentication);
+
+/**
+ * Searcher Routes
+ */
+router.get(`/api/search/:search`, authentication, searcherController.search);
 
 /**
  * Playlist Routes
