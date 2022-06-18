@@ -17,12 +17,24 @@ export {};
  *         id:
  *           type: number
  *           description: The auto-generated id of the music.
+ *         ytid:
+ *           type: string
+ *           description: Youtube music code.
  *         title:
  *           type: string
  *           description: The title of music.
  *         author:
  *           type: string
  *           description: Author name.
+ *         description:
+ *           type: string
+ *           description: Description of music.
+ *         url:
+ *           type: string
+ *           description: Music link.
+ *         tambnail:
+ *           type: string
+ *           description: Image link on youtube
  *         time:
  *           type: string
  *           description: Time of music.

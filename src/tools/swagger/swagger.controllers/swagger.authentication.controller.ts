@@ -3,7 +3,7 @@ export {};
  * @swagger
  * /authentication/register:
  *   post:
- *     summary: Registro de usuário para login no sistema
+ *     summary: User register on system.
  *     tags:
  *      - Authentication
  *     produces:
@@ -32,7 +32,7 @@ export {};
  * @swagger
  * /authentication:
  *   post:
- *     summary: Entrada de usuário para login no sistema
+ *     summary: User entry to login on system.
  *     tags:
  *      - Authentication
  *     produces:

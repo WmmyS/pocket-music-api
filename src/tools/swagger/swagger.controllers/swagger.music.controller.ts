@@ -10,13 +10,13 @@ export {};
  * @swagger
  * /music:
  *   get:
- *     summary: Retorna as todas as Músicas.
- *     description: Retorna as todas especificações das Músicas.
+ *     summary: Return all musics.
+ *     description: Return all musics specifications.
  *     tags:
  *       - Music
  *     responses:
  *       200:
- *         description: Sucesso
+ *         description: Success
  *         content:
  *           application/json:
  *             schema:
@@ -39,18 +39,18 @@ export {};
  * @swagger
  * /music/{id}:
  *   get:
- *     summary: Retorna a música que corresponde ao ID informado
+ *     summary: Return music with informed ID.
  *     tags:
  *      - Music
  *     produces:
  *      - application/json
  *     responses:
  *       200:
- *         description: Sucesso
+ *         description: Success
  *       400:
- *         description: ID inválido
+ *         description: Invalid ID
  *       404:
- *         description: Música não encontrada
+ *         description: Music not found
  *       500:
  *         description: Internal Server Error
  */
@@ -59,7 +59,7 @@ export {};
  * @swagger
  * /music:
  *   post:
- *     summary: Adicionando uma música
+ *     summary: Inser a music on system
  *     tags:
  *      - Music
  *     requestBody:
@@ -71,9 +71,9 @@ export {};
  *      - application/json
  *     responses:
  *       200:
- *         description: OK
+ *         description: Success
  *       405:
- *         description: Entrada inválida
+ *         description: Invalid entry
  *       500:
  *         description: Internal Server Error
  */
@@ -82,18 +82,18 @@ export {};
  * @swagger
  * /music:
  *   put:
- *     summary: Atualiza ID da música
+ *     summary: Update a music by ID
  *     tags:
  *      - Music
  *     produces:
  *      - application/json
  *     responses:
  *       200:
- *         description: Sucesso
+ *         description: Success
  *       400:
- *         description: ID inválido
+ *         description: Invalid ID
  *       404:
- *         description: Música não encontrada
+ *         description: Music not found
  *       500:
  *         description: Internal Server Error
  */
@@ -102,14 +102,14 @@ export {};
  * @swagger
  * /music/{id}:
  *   delete:
- *     summary: Deleta música
+ *     summary: Delete an úsic by informed ID
  *     tags:
  *      - Music
  *     produces:
  *      - application/json
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *       400:
  *         description: Bad Request
  *       401:

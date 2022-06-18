@@ -16,7 +16,7 @@ export {};
  *       - User
  *     responses:
  *       200:
- *         description: A list of users.
+ *         description: Success
  *         content:
  *           application/json:
  *             schema:
@@ -39,21 +39,21 @@ export {};
  * @swagger
  * /user/{id}:
  *   get:
- *     summary: Returns a user with ID informed.
+ *     summary: Returns an user with informed ID.
  *     tags:
  *      - User
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the user to retrieve.
+ *         description: User ID to retrieve.
  *         schema:
  *           type: string
  *     produces:
  *      - application/json
  *     responses:
  *       200:
- *         description: Return a User if found.
+ *         description: Success
  *         content:
  *           application/json:
  *             schema:
@@ -76,7 +76,7 @@ export {};
  * @swagger
  * /user:
  *   post:
- *     summary: Create a user.
+ *     summary: Create an user.
  *     tags:
  *      - User
  *     requestBody:
@@ -88,7 +88,7 @@ export {};
  *      - application/json
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *         produces:
  *           - application/json
  *       400:
@@ -112,7 +112,7 @@ export {};
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the user to retrieve.
+ *         description: User ID to retrieve.
  *         schema:
  *           type: string
  *     requestBody:
@@ -124,7 +124,7 @@ export {};
  *      - application/json
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *       400:
  *         description: Bad Request
  *       401:
@@ -148,12 +148,12 @@ export {};
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the user to retrieve.
+ *         description: User ID to retrieve.
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *       400:
  *         description: Bad Request
  *       401:

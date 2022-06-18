@@ -10,8 +10,8 @@ export {};
  * @swagger
  * /search/{search}:
  *   get:
- *     summary: Retorna a lista de musicas encontradas.
- *     description: Retorna a lista de musicas encontradas.
+ *     summary: Return a music list found.
+ *     description: Return a music list found.
  *     tags:
  *       - Searcher
  *     parameters:
@@ -23,7 +23,7 @@ export {};
  *           type: string
  *     responses:
  *       200:
- *         description: A list of musics found.
+ *         description: Success
  *         content:
  *           application/json:
  *             schema:

@@ -11,11 +11,11 @@ export {};
  *       properties:
  *         email:
  *           type: string
- *           description: Email de usuário para login.
+ *           description: User email to login.
  *         password:
  *           type: string
- *           description: Senha do usuário.
+ *           description: User password.
  *       example:
- *          email: chico@okn.com.br
+ *          email: wesley@okn.com.br
  *          password: 123
  */

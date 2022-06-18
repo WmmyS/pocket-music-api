@@ -15,27 +15,27 @@ export {};
  *       properties:
  *         id:
  *           type: number
- *           description: Id gerado automaticamente para o usuário.
+ *           description: User id auto generated.
  *         username:
  *           type: string
- *           description: Nome que o usuário escolheu para fazer o login.
+ *           description: User name login.
  *         firstname:
  *           type: string
- *           description: Nome do usuário.
+ *           description: User name.
  *         lastname:
  *           type: string
- *           description: Sobrenome do usuário.
+ *           description: User last name.
  *         email:
  *           type: string
- *           description: Email do usuário.
+ *           description: User email.
  *         password:
  *           type: string
- *           description: Senha do usuário.
+ *           description: User password.
  *       example:
  *          id: s5a16das56d1asda
- *          username: chico
- *          firstname: francisco
- *          lastname: chico
- *          email: chico@okn.com.br
+ *          username: wesleyexemplo
+ *          firstname: Wesley
+ *          lastname: Santos
+ *          email: wesley@okn.com.br
  *          password: 123
  */

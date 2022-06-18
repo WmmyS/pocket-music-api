@@ -10,13 +10,13 @@ export {};
  * @swagger
  * /playlist:
  *   get:
- *     summary: Retorna a lista de Playlist.
- *     description: Retorna a lista de playlist.
+ *     summary: Returns a playlist list.
+ *     description: Returns a playlist list.
  *     tags:
  *       - Playlist
  *     responses:
  *       200:
- *         description: A list of playlists.
+ *         description: Succcess
  *         content:
  *           application/json:
  *             schema:
@@ -39,21 +39,21 @@ export {};
  * @swagger
  * /playlist/{id}:
  *   get:
- *     summary: Retorna a playlist que corresponde ao ID informado
+ *     summary: Returns a playlist with informed ID.
  *     tags:
  *      - Playlist
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the Playlist to retrieve.
+ *         description: Playlist ID to retrieve.
  *         schema:
  *           type: string
  *     produces:
  *      - application/json
  *     responses:
  *       200:
- *         description: Return a playlist if found.
+ *         description: Success
  *         content:
  *           application/json:
  *             schema:
@@ -76,7 +76,7 @@ export {};
  * @swagger
  * /playlist:
  *   post:
- *     summary: Criando o usuário
+ *     summary: Create a new playlist.
  *     tags:
  *      - Playlist
  *     requestBody:
@@ -88,7 +88,7 @@ export {};
  *      - application/json
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *         produces:
  *           - application/json
  *       400:
@@ -105,14 +105,14 @@ export {};
  * @swagger
  * /playlist/{id}:
  *   put:
- *     summary: Update playlist
+ *     summary: Update a playlist
  *     tags:
  *      - Playlist
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the Playlist to retrieve.
+ *         description: Playlist ID to retrieve.
  *         schema:
  *           type: string
  *     requestBody:
@@ -124,7 +124,7 @@ export {};
  *      - application/json
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *       400:
  *         description: Bad Request
  *       401:
@@ -148,12 +148,12 @@ export {};
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the Playlist to retrieve.
+ *         description: Playlist ID to retrieve.
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Ok
+ *         description: Success
  *       400:
  *         description: Bad Request
  *       401:
